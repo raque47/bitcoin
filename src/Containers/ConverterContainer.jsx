@@ -1,23 +1,56 @@
 import React from 'react';
-import Search from '../Components/Converter/Converter';
+import Converter from '../Components/Converter/Converter';
+import ResultsContainer from './ResultsContainer';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
+import axios from 'axios';
 
 class ConverterContainer extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //indexSelectedNotebook: 0, 
+      amountOfBitcoins: '',
+      resetAmount: '',
+      currency: '',
+      resetCurrency:'',
+      resetControl: false,
+      response: [] //value of currencies selected
     };
-    //this.changeNotebook=this.changeNotebook;
+    this.onChangeSelect = this.onChangeSelect.bind(this);
+    this.onChangeAmountOfBitcoins = this.onChangeAmountOfBitcoins.bind(this);
+  }
+  // addAcceptAmountEvent() {
+  //   this.props.onClickAcceptConvert(this.state.amountOfBitcoins, this.state.currency);
+  //   this.setState({ resetAmount: '', amountOfBitcoins:'', resetCurrency: '', currency: '', resetControl: true });
+  // }
+  onChangeSelect(currency) {
+    console.log('You have selected: ' + currency);
+   //this.setState({ currency: currency });
+    this.props.onChangeSelect(currency);
+  }
+  onChangeAmountOfBitcoins(amount) {
+    console.log('AAmount of bitcoinss: ' + amount);
+    this.setState({ resetAmount: amount });
+    this.props.onChangeAmountOfBitcoins(amount);
   }
   render() {
-    const { allMyNotebooks } = this.props.stateApp;
     return (
-      <div className='col-md-11'>
+      <div>
+
         <Converter
-          sources={ this.props.sources }
+          resetAmount={this.state.resetAmount}
+          resetCurrency={this.state.resetCurrency}
+          onClickAcceptConvert={this.addAcceptAmountEvent}
+          onChangeSelect={this.onChangeSelect}
+          getConvertion={this.getConvertion}
+          onChangeAmountOfBitcoins={this.onChangeAmountOfBitcoins}
         />
+
+
+
+
       </div>
     );
+
   }
 }
 

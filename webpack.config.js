@@ -16,11 +16,11 @@ module.exports = {
   },
   devServer: {
     historyApiFallback: true,
-    },
+  },
   resolve: {
     // add alias for application code directory
-    alias:{
-        'bootstrap-path': path.join(__dirname, '../node_modules/bootstrap-sass/assets/stylesheets/')
+    alias: {
+      'bootstrap-path': path.join(__dirname, '../node_modules/bootstrap-sass/assets/stylesheets/')
     },
     extensions: ['.js', '.jsx', '.json'],
   },
@@ -33,13 +33,18 @@ module.exports = {
     fs: "empty",
     net: 'empty',
     tls: 'empty'
-  },  
+  },
   module: {
     rules: [
       {
         test: /\.jsx?$/,
         exclude: /node_modules/,
         loaders: ['babel-loader'],
+      },
+      { test: /\.css$/, 
+         use: [
+          'css-loader'
+        ],
       },
       {
         test: /\.scss$/,
@@ -48,15 +53,17 @@ module.exports = {
           'css-loader',
           'postcss-loader',
           'sass-loader'
-         ],
+        ],
       },
       {
         test: /\.(?:png|jpg|svg)$/,
         loader: 'url-loader',
         query: {
-        // Inline images smaller than 10kb as data URIs        limit: 10000
-            },
-      }
+          // Inline images smaller than 10kb as data URIs        limit: 10000
+        },
+      },
+      
+
     ],
   },
   plugins: [
