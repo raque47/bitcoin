@@ -23,7 +23,7 @@ class App extends React.Component {
           </div>
           <div className="container">
             <div className="row">
-              <div className="col-md-10 col-sm-10 col-xs-12">
+              <div className="col-md-12 col-sm-12 col-xs-12">
                 <div className='generalContainer'>
                   <AppContainer />
                 </div>

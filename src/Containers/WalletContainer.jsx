@@ -1,61 +1,43 @@
 
 import React from 'react';
-import DropDown from '../Components/DropDown/DropDown';
+import Wallet from '../Components/Wallet/Wallet';
+import ResultsWalletsContainer from './ResultsWalletsContainer';
+import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom';
 import axios from 'axios';
 
 class WalletContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            //value of currencies selected
-            vectorOfCurrencies: [],
+            amountOfBitcoins: '',
+            resetAmount: '',
+            currency: '',
+            resetCurrency:'',
+            resetControl: false,
+            response: [] //value of currencies selected
         };
-        this.getConvertionRatesInSources = this.getConvertionRatesInSources.bind(this);
+        this.onChangeSelect = this.onChangeSelect.bind(this);
     }
-    getConvertionRatesInSources(currency) {
-        //return this.poll(() => 
-        axios.get('https://community-bitcointy.p.mashape.com/all/' + currency, {
-            headers: { "X-Mashape-Key": "rbzS8fXxDImshKZJSrbol9woVjS1p1JD9fmjsnwmxMJolF2NPq" }
-        })
-            .then((resp) => {
-                console.dir(resp)
-                //blockchain
-                //this.setState({sources1:resp});
-                this.setState({ sources: resp, sourceEvent: false });
-                console.log('LOOOO');
-                console.log(this.state.sources);
-                console.log(resp.data[0])
-                console.log(resp.data[0].exchange)
-                console.log(resp.data[0].currency)
-                console.log(resp.data[0].value)
-                //bitfinex
-                console.log(resp.data[1])
-                console.log(resp.data[1].exchange)
-                console.log(resp.data[1].currency)
-                console.log(resp.data[1].value)
-                //btccharts
-                //coinbase
-                //bitpay
-            }) //  ,  15, 1000),
-            .catch(err => {
-                console.log(err);
-            });
-    }
-    render() {
-        //const { allMyNotebooks } = this.props.stateApp;
-        return (
-            <div className='col-md-11'>
-                <DropDown
-                    vectorOfCurrencies={this.state.vectorOfCurrencies}
-                />
-            </div>
-        );
-    }
-}
+  onChangeSelect(currency) {
+    console.log('You have selected: ' + currency);
+    this.props.onChangeSelect(currency);
+  }
 
+    render() {
+    return (
+      <div>
+        <Wallet
+          //resetAmount={this.state.resetAmount}
+          resetCurrency={this.state.resetCurrency}
+          onClickAcceptGetWallets={this.addAcceptAmountEvent}
+          onChangeSelect={this.onChangeSelect}
+          //getConvertion={this.getConvertion}
+          //onChangeAmountOfBitcoins={this.onChangeAmountOfBitcoins}
+        />
+      </div>
+    );
+
+  }
+}
 export default WalletContainer;
 
-//   if (this.state.sourceEvent === true) {
-//       this.getConvertionRatesInSources('CAD');
-//       //console.log(this.state.sources1);
-//     }

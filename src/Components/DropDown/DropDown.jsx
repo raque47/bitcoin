@@ -12,11 +12,7 @@ class DropDown extends React.Component {
         this.props.onChangeSelect(event.target.id, event.target.value);
     }
     render() {
-        //const Select = require('react-select');
-        return (
-
-            <div>
-            <ul className="dropdown">
+    return (<ul className="dropdown-menu">
                 <li key='USD' >
                     <button id='USD' onClick={this.handleOnChangeSelect} value='USD' className="btnDropDown">USD </button>
                 </li>
@@ -38,12 +34,10 @@ class DropDown extends React.Component {
                 <li key='CHF' >
                     <button id='CHF' onClick={this.handleOnChangeSelect} value='CHF' className="btnDropDown">CHF </button>
                 </li>
-            </ul>
-            </div>
-        );
-    }
+         </ul>
+    );
+  }
 };
-
 
      
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import InlineEdit from 'react-edit-inline';
 
-class Result extends React.Component {
+class ResultWallet extends React.Component {
 
     constructor(props) {
         super(props);
@@ -11,9 +11,9 @@ class Result extends React.Component {
         return (
             <div className="borderStyle">
                 <div className="header" >
-                    <h4> The amount of bitcoins you enter is the equivalent of </h4>
-                    <span className="noteAddedTitle">{this.props.currency}+ { ' ' }</span>
+                    <span className="noteAddedTitle">{this.props.currency}</span>
                     <span className="noteAddedTitle">{this.props.value}</span>
+                    <span className="noteAddedTitle">{this.props.exchange}</span>
                 </div>
             </div>
         );
@@ -21,4 +21,4 @@ class Result extends React.Component {
 };
 
 
-export default Result;  
+export default ResultWallet;  

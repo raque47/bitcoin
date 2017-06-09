@@ -7,16 +7,15 @@
     align-content: space-around;
     align-items: center;
 }
-.amountOfBitcoinsSpan {
+.amountOfBitcoinsSpan{
     display: block;
-    font-size: 2rem;
 }
 .inputInformationConverterPanel{
     display: flex;
     flex-direction: column;
     padding: 3rem;
     margin-top: 15rem;
-    //padding-left: 15rem;
+    padding-left: 15rem;
 }
 
 .amountOfBitcoinsControl{

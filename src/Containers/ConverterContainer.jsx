@@ -18,13 +18,8 @@ class ConverterContainer extends React.Component {
     this.onChangeSelect = this.onChangeSelect.bind(this);
     this.onChangeAmountOfBitcoins = this.onChangeAmountOfBitcoins.bind(this);
   }
-  // addAcceptAmountEvent() {
-  //   this.props.onClickAcceptConvert(this.state.amountOfBitcoins, this.state.currency);
-  //   this.setState({ resetAmount: '', amountOfBitcoins:'', resetCurrency: '', currency: '', resetControl: true });
-  // }
   onChangeSelect(currency) {
     console.log('You have selected: ' + currency);
-   //this.setState({ currency: currency });
     this.props.onChangeSelect(currency);
   }
   onChangeAmountOfBitcoins(amount) {
@@ -35,19 +30,14 @@ class ConverterContainer extends React.Component {
   render() {
     return (
       <div>
-
         <Converter
           resetAmount={this.state.resetAmount}
           resetCurrency={this.state.resetCurrency}
-          onClickAcceptConvert={this.addAcceptAmountEvent}
+          //onClickAcceptConvert={this.addAcceptAmountEvent}
           onChangeSelect={this.onChangeSelect}
-          getConvertion={this.getConvertion}
+          //getConvertion={this.getConvertion}
           onChangeAmountOfBitcoins={this.onChangeAmountOfBitcoins}
         />
-
-
-
-
       </div>
     );
 
