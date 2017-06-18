@@ -14,25 +14,28 @@ class DropDown extends React.Component {
     render() {
     return (<ul className="dropdown-menu">
                 <li key='USD' >
-                    <button id='USD' onClick={this.handleOnChangeSelect} value='USD' className="btnDropDown">USD </button>
+                    <button id='USD' onClick={this.handleOnChangeSelect} value='USD' className="btnDropDown">Dollars </button>
                 </li>
                 <li key='EUR' >
-                    <button id='EUR' onClick={this.handleOnChangeSelect} value='EUR' className="btnDropDown">EUR </button>
+                    <button id='EUR' onClick={this.handleOnChangeSelect} value='EUR' className="btnDropDown">Euros </button>
                 </li>
                 <li key='JPY' >
-                    <button id='JPY' onClick={this.handleOnChangeSelect} value='JPY' className="btnDropDown">JPY </button>
+                    <button id='JPY' onClick={this.handleOnChangeSelect} value='JPY' className="btnDropDown">Japanese yen</button>
                 </li>
                 <li key='GBP' >
-                    <button id='GBP' onClick={this.handleOnChangeSelect} value='GBP' className="btnDropDown">GBP </button>
+                    <button id='GBP' onClick={this.handleOnChangeSelect} value='GBP' className="btnDropDown">Pound sterling</button>
                 </li>
                 <li key='AUD' >
-                    <button id='AUD' onClick={this.handleOnChangeSelect} value='AUD' className="btnDropDown">AUD </button>
+                    <button id='AUD' onClick={this.handleOnChangeSelect} value='AUD' className="btnDropDown">Australian dollar</button>
                 </li>
                 <li key='CAD' >
-                    <button id='CAD' onClick={this.handleOnChangeSelect} value='CAD' className="btnDropDown">CAD </button>
+                    <button id='CAD' onClick={this.handleOnChangeSelect} value='CAD' className="btnDropDown">Canadian dollar</button>
                 </li>
                 <li key='CHF' >
-                    <button id='CHF' onClick={this.handleOnChangeSelect} value='CHF' className="btnDropDown">CHF </button>
+                    <button id='CHF' onClick={this.handleOnChangeSelect} value='CHF' className="btnDropDown">Swiss franc</button>
+                </li>
+                <li key='CNY' >
+                    <button id='CNY' onClick={this.handleOnChangeSelect} value='CNY' className="btnDropDown">Renminbi</button>
                 </li>
          </ul>
     );

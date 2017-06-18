@@ -11,9 +11,8 @@ class Result extends React.Component {
         return (
             <div className="borderStyle">
                 <div className="header" >
-                    <h4> The amount of bitcoins you enter is the equivalent of </h4>
-                    <span className="noteAddedTitle">{this.props.currency}+ { ' ' }</span>
-                    <span className="noteAddedTitle">{this.props.value}</span>
+                   {'The amount of bitcoins you enter is the equivalent of '
+                   +this.props.value + '  ' + this.props.currency}
                 </div>
             </div>
         );

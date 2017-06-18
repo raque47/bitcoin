@@ -1,12 +1,11 @@
 import React from 'react';
-//import unirest from 'unirest';
 import axios from 'axios';
 import style from '../Components/Converter/_converter.scss';
 import { Route } from 'react-router-dom';
 import { Redirect } from 'react-router';
 import ConverterContainer from './ConverterContainer';
 import WalletContainer from './WalletContainer';
-import ResultsContainer from './ResultsContainer'; 
+import ResultsContainer from './ResultsContainer';
 import ResultsWalletsContainer from './ResultsWalletsContainer';
 
 class AppContainer extends React.Component {
@@ -19,20 +18,18 @@ class AppContainer extends React.Component {
       amountContent: '',
       sourceEvent: true,
       action: '',
-      exchangeContentWallet:'',
-      currencyContentWallet:'',
-      amountContentWallet:'',
+      exchangeContentWallet: '',
+      currencyContentWallet: '',
+      amountContentWallet: '',
       walletEvent: true
     };
     this.onChangeSelect = this.onChangeSelect.bind(this);
     this.onChangeAmountOfBitcoins = this.onChangeAmountOfBitcoins.bind(this);
     this.getAnswer = this.getAnswer.bind(this);
-    //this.onChangeSelectWallet = this.onChangeSelectWallet.bind(this);
     this.onChangeAmountOfBitcoins = this.onChangeAmountOfBitcoins.bind(this);
     this.getAnswerWallet = this.getAnswerWallet.bind(this);
   }
   getAnswer(amountContent, currencyContent) {
-    // console.log("ESTOY EN CHOOSE FOLDER!!!!!" + "el action type aqui vale: " + this.state.actionType + "action es: " + action);
     this.setState({ amountContent: amountContent, currencyContent: currencyContent });
   }
   onChangeSelect(currency) {
@@ -41,18 +38,14 @@ class AppContainer extends React.Component {
   onChangeAmountOfBitcoins(amount) {
     this.setState({ amountContent: amount });
   }
-  getAnswerWallet(exchange,currencyContent,amountContent) {
-    // console.log("ESTOY EN CHOOSE FOLDER!!!!!" + "el action type aqui vale: " + this.state.actionType + "action es: " + action);
-    this.setState({exchangeContentWallet:exchange, currencyContentWallet:currencyContent, amountContentWallet:amountContent });
+  getAnswerWallet(currencyContent) {
+    this.setState({ currencyContentWallet: currencyContent });
   }
-  // onChangeSelectWallet(currency) {
-  //   this.setState({ currencyContentWallet: currency });
-  // }
 
   render() {
     return (
       <div>
-    
+
         <div className="converterPanel">
           <ConverterContainer
             onClickAcceptConvert={this.getAnswer}
@@ -69,8 +62,9 @@ class AppContainer extends React.Component {
           )}
           />
         </div>
-        
+
         <div className="converterPanel">
+
           <WalletContainer
             onClickAcceptWallet={this.getAnswerWallet}
             currencyContent={this.state.currencyContent}
@@ -78,9 +72,7 @@ class AppContainer extends React.Component {
           />
           <Route exact path='/getDigitalWallets' render={() => (
             <ResultsWalletsContainer
-              exchange= {this.state.exchangeContent}
-              amountInput={this.state.amountContent}
-              currencyDropDrown={this.state.currencyContent}
+              currencyContent={this.state.currencyContent}
             />
           )}
           />

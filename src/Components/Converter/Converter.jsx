@@ -36,57 +36,52 @@ class Converter extends React.Component {
   }
 
   render() {
-    //const response = this.props.addedTags;
     return (
-      console.log('ESTOY EN CONVERTER '),
       <Route path="/" render={() => (
 
-        <div className='row'>
-          <div className='inputInformationConverterPanel'>
+        <div className='containerOfConversions'>
 
-            <div className='amountOfBitcoinsControl'>
-              <h2 className='amountOfBitcoinsSpan'>Digit the amount of bitcoins you want to convert: </h2>
-              <input type='text'
-                onChange={this.handleOnChange}
-                value={this.props.resetAmount}
-                placeholder='Amount of bitcoins..'
-                className='amountOfBitcoinsInput form-control'
-                id='amountOfBitcoin'
-                onKeyPress={this.handleOnKeyPress}
-              />
-            </div>
+          <div className='row'>
+              <div className='amountOfBitcoinsControl'>
+                <div className='tittleContainer'>
+                  <h2 className='amountOfBitcoinsSpan'>Digit the amount of bitcoins you want to convert: </h2>
+                </div>
+                <div className='inputAmountBitcoins'>
+                  <input type='text'
+                    onChange={this.handleOnChange}
+                    value={this.props.resetAmount}
+                    placeholder='Amount of bitcoins..'
+                    className='amountOfBitcoinsInput form-control'
+                    id='amountOfBitcoin'
+                    onKeyPress={this.handleOnKeyPress}
+                  />
+                </div>
+              </div>
+
           </div>
 
           <div className='row'>
-
             <div className="dropDownControler">
+              <div className="containerElectionCurrency">
+                <img src={require('../../images/coins.svg')} className="coinsImage" />
+                <div className="dropdown currenciesDropdown">
+                  <button className="btn btn-primary dropdown-toggle btnModal" type="button" data-toggle="dropdown" data-hover="dropdown">{this.state.title}<span className="caret"></span></button>
+                  <DropDown
+                    onChangeSelect={this.onChangeSelect}
+                    resetCurrency={this.props.resetCurrency}
+                  />
 
-              <div className='col-md-2'>
-                <h4 className="currencyLabel">Choose a currency:</h4>
-              </div>
-
-
-              <div className='col-md-10'>
-
-                <div className="containerElectionCurrency">
-                  <img src={require('../../images/coins.svg')} className="coinsImage" />
-                  <div className="dropdown currenciesDropdown">
-                    <button className="btn btn-primary dropdown-toggle btnModal" type="button" data-toggle="dropdown" data-hover="dropdown">{this.state.title}<span className="caret"></span></button>
-                    <DropDown
-                      onChangeSelect={this.onChangeSelect}
-                      resetCurrency={this.props.resetCurrency}
-                      //onChangeSelect={this.getCurrencyId}
-                    />
-                  </div>
                 </div>
+                <Link to={'/getAmount'}>
+                  <button onClick={this.props.onClickAcceptConvert} id='getAmountButton' className='acceptConverterButton' >
+                    <span className="acceptConverterSpanText" data-toggle="tooltip" data-placement="top" title="Add Note">Get amount</span>
+                  </button>
+                </Link>
 
               </div>
+
+
             </div>
-            <Link to={'/getAmount'}>
-              <button onClick={this.props.onClickAcceptConvert} id='getAmountButton' className='acceptConverterButton' >
-                <span className="acceptConverterSpanText" data-toggle="tooltip" data-placement="top" title="Add Note">Get amount</span>
-              </button>
-            </Link>
           </div>
         </div>
       )}

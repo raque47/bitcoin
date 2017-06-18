@@ -19,17 +19,19 @@ body {
     padding-left: 0px;
     padding-right: 0px;
 }
-.generalContainer{
+
+.generalContainer {
     display: flex;
+    -ms-flex-direction: row;
     flex-direction: row;
+    padding-bottom: 3rem;
+     justify-content: center;
 }
 
 .welcomeContainer {
-     /* margin-top: 5em; */
     text-align: center;
-    /* color: #A12325; */
     color: #fff;
-padding-top: 8em;
+    padding-top: 8em;
     padding-bottom: 11rem;
     font-family: 'Amatic SC', cursive;
 }
@@ -43,6 +45,27 @@ padding-top: 8em;
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+#gradientContainer {
+    background: #FFE57F; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #000066, #FFE57F);/* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #000066, #FFE57F); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #000066, #FFE57F); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #000066, #FFE57F); /* Standard syntax */
+}
+.gradientContainer {
+    background: #FFE57F; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #000066, #FFE57F);/* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #000066, #FFE57F); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #000066, #FFE57F); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #000066, #FFE57F); /* Standard syntax */
+        /* Create the parallax scrolling effect */
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 
 /* Media Queries */
 /* Mobile Styles */

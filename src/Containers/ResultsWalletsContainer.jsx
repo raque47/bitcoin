@@ -1,70 +1,65 @@
 import React from 'react';
 import Result from '../Components/Result/Result';
 import axios from 'axios';
+import ResultWallet from  '../Components/ResultWallet/ResultWallet';
 
 class ResultsWalletContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            //indexSelectedNotebook: 0, 
-            //amountOfBitcoins: '',
-            //value of currencies selected
-            //vectorOfCurrencies: [],
+            vectorValues: [],
+            vectorExchange: [],
+            vectorCurrencies: [],
             convertionResults: [],
+            selected:false,
             walletEvent: true
         };
-        //this.getConvertion = this.getConvertion.bind(this);
     }
     getConvertionRatesInSources(currency) {
-        //return this.poll(() => 
         axios.get('https://community-bitcointy.p.mashape.com/all/' + currency, {
             headers: { "X-Mashape-Key": "rbzS8fXxDImshKZJSrbol9woVjS1p1JD9fmjsnwmxMJolF2NPq" }
         })
             .then((resp) => {
-                console.dir(resp)
-                //blockchain
-                //this.setState({sources1:resp});
-                this.setState({ convertionResults: resp, walletEvent: false });
-
-                console.log(resp.data[0].value)
-                console.log(resp.data[0].exchange)
-                console.log(resp.data[0].currency)
-                //bitfinex
-                console.log(resp.data[1])
-                console.log(resp.data[1])
-
-                console.log(resp.data[2])
-                console.log(resp.data[2])
-                //btccharts
-                //coinbase
-                //bitpay
-            }) //  ,  15, 1000),
+                this.setState({ convertionResults: resp.data, walletEvent: false, });
+            }) 
             .catch(err => {
                 console.log(err);
             });
     }
 
     render() {
-        if (this.state.sourceEvent === true) {
-            console.log('ENTRE');
-            this.getConvertionRatesInSources(this.props.currencyDropDrown);
-            console.log(this.props.amountInput + ' currency ' + this.props.currencyDropDrown);
-            console.log(' ss' + convertionResults)
-            this.state.sourceEvent = false;
-        }
-        const results = this.state.convertionResults;
+        if (this.state.walletEvent === true) {
+            this.getConvertionRatesInSources(this.props.currencyContent);
+            this.state.walletEvent = false;
 
-        // console.log(this.state.sources1);
-        return <div className="containerOfElements">{results.map((item) => {
-            console.log('LAAA curr ' + item.currency + ' valuee ' + item.value + 'exchange ' + item.exchange);
-            return <ResultWallet
-                currency={item.currency}
-                value={item.value}
-                exchange={item.exchange}
-            />
+        }
+     const results = this.state.convertionResults;
+     const newLink = '';
+        return (<div className="containerOfElements">{results.map((item) => {
+            switch(item.exchange) {
+                case 'blockchain': this.state.newLink= 'https://blockchain.info/es/wallet/#/';
+                break;
+                case 'bitfinex': this.state.newLink= 'https://www.bitfinex.com/';
+                break;
+                case 'btccharts': this.state.newLink= 'http://btccharts.com/';
+                break;
+                case 'coinbase':this.state.newLink= 'https://www.coinbase.com/?locale=es';
+                break;
+                case 'bitpay': this.state.newLink= 'https://bitpay.com/';
+                break;
+                default: this.state.newLink= ''
+            }
+                    
+                
+                return <ResultWallet
+                    currency={item.currency}
+                    value={item.value}
+                    exchange={item.exchange}
+                    link={this.state.newLink}
+                />
         })}
 
-        </div>;
+        </div>);
     }
 }
 

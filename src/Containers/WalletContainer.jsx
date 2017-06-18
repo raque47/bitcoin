@@ -19,7 +19,6 @@ class WalletContainer extends React.Component {
         this.onChangeSelect = this.onChangeSelect.bind(this);
     }
   onChangeSelect(currency) {
-    console.log('You have selected: ' + currency);
     this.props.onChangeSelect(currency);
   }
 
@@ -27,12 +26,8 @@ class WalletContainer extends React.Component {
     return (
       <div>
         <Wallet
-          //resetAmount={this.state.resetAmount}
           resetCurrency={this.state.resetCurrency}
-          onClickAcceptGetWallets={this.addAcceptAmountEvent}
           onChangeSelect={this.onChangeSelect}
-          //getConvertion={this.getConvertion}
-          //onChangeAmountOfBitcoins={this.onChangeAmountOfBitcoins}
         />
       </div>
     );

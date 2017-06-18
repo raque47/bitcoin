@@ -14,21 +14,24 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <div className="parallaxIndex">
+          <div className="gradientContainer">
             <div className="welcomeContainer">
               <h3> The best bitcoin assistant </h3>
-              <h1> WELCOME TO THE NEW CURRENCY HELPER </h1>
+              <h1> BITCOIN HELPER </h1>
               <h3> All you need to know about bitcoin </h3>
             </div>
           </div>
-          <div className="container">
-            <div className="row">
-              <div className="col-md-12 col-sm-12 col-xs-12">
-                <div className='generalContainer'>
-                  <AppContainer />
+        
+            <div className="container">
+              <div className="row">
+                <div className="col-md-12 col-sm-12 col-xs-12">
+                  <div className='generalContainer'>
+                    <AppContainer />
+                  </div>
                 </div>
               </div>
             </div>
+              <div className="gradientContainer">
           </div>
         </div>
       </Router>
